@@ -1,0 +1,31 @@
+1) To enable [(ngModel)] for input field, you need to 
+   import {FormsModule} from '@angular/forms';
+   in app.module.ts
+
+2) Directives are instructions in DOM.
+   * Structural Directives -> *ngIf, *ngFor
+   * Attribute Directives -> ngClass, ngStyle
+
+3) Bindings:
+   * Property Binding -> []
+   * Event Binding -> ()
+   * Property Binding + Event Binding -> [(ngModel)]
+
+4) @ViewChild('serverContentInput'), {static: true}) serverContent	--> For Angular 8+
+
+5) <ng-content></ng-content> is used when you want to render the content between the component selector used in some other component!
+
+6) @ContentChild('localReference'), {static: true}) variableName	--> For Angular 8+
+   * Used when you use #localReference in <ng-content> and want to use it in actual component of <ng-content>.
+
+7) Lifecycle:
+   * ngOnChnages
+   * ngOnInit -> It will run after the constructor
+   * ngDoCheck
+   * ngAfterContentInit
+   * ngAfterContentChecked
+   * ngAfterViewInit
+   * ngAfterViewChecked
+   * ngOnDestroy
+
+8) 
