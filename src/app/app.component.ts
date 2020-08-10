@@ -11,6 +11,8 @@ export class AppComponent implements OnInit {
   lastName: string;
   schoolName: string;
 
+  arrayNumbers = [1, 2, 3, 4];
+
   ngOnInit(): void {
     this.firstName = "Sujay";
     this.lastName = "Patil";
