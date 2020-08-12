@@ -47,4 +47,30 @@ export class DropdownDirective {
 
 ******************************************************************************************************************
 
-9) 
+9) To apply css class on router:
+   * routerLinkActive="cssClassName"
+   * [routerLinkActiveOptions]="{exact: true}" --> Apply on complete path
+
+10) Relative path to router --> 
+
+    * Example: localhost:4200/trial/test --> It will append to current url path
+
+******************************************************************************************************************    
+
+    import { Router, ActivatedRoute } from '@angular/router';
+
+    constructor( private route: ActivatedRoute ) { }
+	
+    this.router.navigate(['test'], {relativeTo: this.route});
+
+******************************************************************************************************************
+
+11) If you want to add parameters to your path, you need to use colon(:) and parameter name in app.module.ts
+
+******************************************************************************************************************    
+
+{ path: 'trial/:id', component: TrialComponent }
+
+******************************************************************************************************************    
+
+12) 

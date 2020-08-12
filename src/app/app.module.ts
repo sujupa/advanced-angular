@@ -12,7 +12,8 @@ import { TrialComponent } from './trial/trial.component';
 const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'test', component: TestComponent },
-  { path: 'trial', component: TrialComponent }
+  { path: 'trial', component: TrialComponent },
+  { path: 'trial/:id/:name', component: TrialComponent }
 ];
 
 @NgModule({

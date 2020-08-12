@@ -19,4 +19,7 @@ School Name: {{schoolName}}
   <p *ngFor="let no of arrayNumbers">{{no}}</p>
 </div>
 
+<button routerLink="/trial" routerLinkActive="cssClass" [routerLinkActiveOptions]="{exact: true}">Trial
+  Component</button>
+
 <router-outlet></router-outlet>
