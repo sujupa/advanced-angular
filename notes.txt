@@ -49,6 +49,7 @@ export class DropdownDirective {
 
 9) To apply css class on router:
    * routerLinkActive="cssClassName"
+   * [routerLink]="['/users',10,'Anna']"  --> if there are params in url
    * [routerLinkActiveOptions]="{exact: true}" --> Apply on complete path
 
 10) Relative path to router --> 
@@ -73,4 +74,8 @@ export class DropdownDirective {
 
 ******************************************************************************************************************    
 
-12) 
+12) Always use below method to get params from url because it uses observables to fetch params and don't use snapshot of params
+
+this.route.params.subscribe((params:Params) => {
+		var = params['id'];			
+});
