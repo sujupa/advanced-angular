@@ -11,17 +11,28 @@ import { TrialComponent } from './trial/trial.component';
 import { ChildTestComponentComponent } from './child-test-component/child-test-component.component';
 import { combineLatest } from 'rxjs';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuard } from './auth-guard/auth-guard.service';
+import { AuthService } from './auth-guard/auth.service';
+import { CanDeactivateGuard } from './auth-guard/can-deactivate-guard.service';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
   {
-    path: 'test', component: TestComponent, children: [
-      { path: 'child', component: ChildTestComponentComponent }
+    path: 'test', component: TestComponent,
+    // canActivate: [AuthGuard],      //for parent
+    canActivateChild: [AuthGuard],    //for child
+    children: [
+      {
+        path: 'child', component: ChildTestComponentComponent,
+        canDeactivate: [CanDeactivateGuard]
+      }
     ]
   },
   { path: 'trial', component: TrialComponent },
   { path: 'trial/:id/:name', component: TrialComponent },
-  { path: 'trial/:id/edit', component: TrialComponent }
+  { path: 'trial/:id/edit', component: TrialComponent },
+  { path: 'notFound', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/notFound' }
 ];
 
 @NgModule({
@@ -39,7 +50,7 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

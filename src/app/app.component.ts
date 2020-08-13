@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth-guard/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +14,26 @@ export class AppComponent implements OnInit {
   schoolName: string;
 
   arrayNumbers = [1, 2, 3, 4];
+  changesSaved: boolean = false;
 
   ngOnInit(): void {
     this.firstName = "Sujay";
     this.lastName = "Patil";
   }
 
-  constructor() { }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   getEvent1(event) {
     this.schoolName = event;
+  }
+
+  onLogin() {
+    this.authService.login();
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
 }
