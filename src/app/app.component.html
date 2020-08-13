@@ -22,4 +22,10 @@ School Name: {{schoolName}}
 <button routerLink="/trial" routerLinkActive="cssClass" [routerLinkActiveOptions]="{exact: true}">Trial
   Component</button>
 
+<button [routerLink]="['/trial','10','edit']" [queryParams]="{param1: '1', param2: '2'}" fragment="loading.."
+  href="#">Route To
+  Trial Component with
+  ID
+  10</button>
+
 <router-outlet></router-outlet>

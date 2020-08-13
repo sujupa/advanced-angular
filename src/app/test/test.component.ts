@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -18,7 +19,7 @@ export class TestComponent implements OnInit {
 
   @ViewChild('schoolViewChild', { static: true }) schoolViewChild;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.schoolName.emit("Amrita Vidyalayam");
@@ -28,6 +29,14 @@ export class TestComponent implements OnInit {
     console.log("Local Reference: ", school.value);
     console.log("View Child Reference: ", this.schoolViewChild.nativeElement.value);
 
+  }
+
+  goToTrial(id: number) {
+    this.router.navigate(['/trial', id, 'edit'], { queryParams: { param1: '1', param2: '2' }, fragment: 'loading' });
+  }
+
+  childRoute() {
+    this.router.navigate(['/test/child']);
   }
 
 }
