@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'trial', component: TrialComponent },
   { path: 'trial/:id/:name', component: TrialComponent },
   { path: 'trial/:id/edit', component: TrialComponent },
-  { path: 'notFound', component: PageNotFoundComponent },
+  { path: 'notFound', component: PageNotFoundComponent, data: { message: 'Page Not Found from app.module.ts' } },
   { path: '**', redirectTo: '/notFound' }
 ];
 
@@ -48,6 +48,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    // RouterModule.forRoot(routes, { useHash: true })
     RouterModule.forRoot(routes)
   ],
   providers: [AuthService, AuthGuard, CanDeactivateGuard],

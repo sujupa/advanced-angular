@@ -103,4 +103,18 @@ this.router.navigate(['/trial', id, 'edit'], { queryParams: { param1: '1', param
 --------------------------------------------------------------------
 { path: '**', redirectTo: '/notFound', pathMatch: 'full' } --> it will check full path
 
-17) 
+17) Sending static data through routing --> in app.module.ts
+
+{ path: 'notFound', component: PageNotFoundComponent, data: { message: 'Page Not Found from app.module.ts' } },
+
+   * Add this in your .ts file to access it:
+
+this.errorMessage = this.route.snapshot.data['message'];
+
+this.route.data.subscribe((data: Data) => {   // better way
+      this.errorMessage = data['message'];
+    });
+
+18) use this in imports of NgModule, so that anything after # will be taken care by client and not server(before hash)
+RouterModule.forRoot(routes, { useHash: true })
+
