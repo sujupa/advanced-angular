@@ -137,5 +137,7 @@ private customIntervalObservable: Subscription;
 
     * Use Subjects only for emitting data between components and services and NOT for @Output() events!!!!
 
-23) 
+23) Forms:
+    * Template Driven -> comes with DOM
+    * Reactive -> we do everything programmatically
 
