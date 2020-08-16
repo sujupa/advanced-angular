@@ -118,3 +118,24 @@ this.route.data.subscribe((data: Data) => {   // better way
 18) use this in imports of NgModule, so that anything after # will be taken care by client and not server(before hash)
 RouterModule.forRoot(routes, { useHash: true })
 
+19) Observables do the following things:
+    * Handle Data
+    * Handle Error
+    * Handle Completion
+
+20) Variable you use to unsubscribe(); must be of type Subscription(imported from rxjs).
+
+private customIntervalObservable: Subscription;
+
+  ngOnDestroy() {
+    this.customIntervalObservable.unsubscribe();
+  }
+
+21) Observables in Trial Component.
+
+22) Instead of EventEmitter use Subject() and instead of emit(value) use next(value);	--> use of Subject in rxjs
+
+    * Use Subjects only for emitting data between components and services and NOT for @Output() events!!!!
+
+23) 
+
