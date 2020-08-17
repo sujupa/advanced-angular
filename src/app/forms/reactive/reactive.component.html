@@ -1,24 +1,56 @@
 <div style="border: 1px solid black; width: max-content; padding: 20px; margin: 10px 0px 10px 0px;">
 
-    <form>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
 
         <h3>Reactive Form</h3>
         <br>
 
         Username<br />
-        <input type="text">
+        <input type="text" formControlName="username">
+        <div *ngIf="username.invalid && username.touched">
+            <span *ngIf="username.errors['nameIsForbidden']">This name is Forbidden!</span>
+            <span *ngIf="username.errors['required']">Please Enter a Username!</span>
+        </div>
         <br /><br />
+
+
+        <!-- this method is for, If you create FormGroup inside another FormGroup -->
+        <div formGroupName="lastnameGroup">
+
+            Lastname<br />
+            <input type="text" formControlName="lastname">
+            <div *ngIf="lastname.invalid && lastname.touched">Please enter a valid lastname!</div>
+            <br /><br />
+
+        </div>
+
 
         Mail<br />
-        <input type="text">
+        <input type="text" formControlName="email">
+        <div *ngIf="email.invalid && email.touched">Please enter a valid email!</div>
         <br /><br />
 
-        Fruits<br />
-        <select>
-            <option value="apple">Apple</option>
-            <option value="orange">Orange</option>
-        </select>
-        <br /><br />
+        Genders<br />
+        <div *ngFor="let gender of genders">
+            {{ gender }}<input type="radio" [value]="gender" formControlName="gender">
+        </div>
+        <br />
+
+
+        <!-- this method is for FormaArray control, means onClick of button adding new input elements -->
+        <div formArrayName="hobbies">
+
+            Your Hobbies<br />
+            <button type="button" (click)="onAddHobby()">Add Hobby</button> <br />
+
+            <div *ngFor="let hobbyControl of getControls(); let i = index">
+                <input type="text" [formControlName]="i">
+            </div>
+
+            <br /><br />
+
+        </div>
+
 
         <button type="submit">Submit</button><br />
 
