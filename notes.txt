@@ -141,3 +141,10 @@ private customIntervalObservable: Subscription;
     * Template Driven -> comes with DOM
     * Reactive -> we do everything programmatically
 
+24) In Template-Driven forms if you use square brackets around [ngModel], then it is for setting default value, otherwise no
+    need for square brackets.
+
+25) To group your data in template-driven forms use this inside form tag, 
+<div ngModelGroup="userDataGroup"></div>  --> inside this put your input n all fields.
+
+26) 

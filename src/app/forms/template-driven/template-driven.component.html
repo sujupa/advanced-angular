@@ -1,26 +1,42 @@
 <div style="border: 1px solid black; width: max-content; padding: 20px; margin: 10px 0px 10px 0px;">
 
-    <form>
+    <form (ngSubmit)="onSubmit(formSubmit123)" #formSubmit123="ngForm">
 
-        <h3>Template Driven Form</h3>
-        <br>
+        <!-- use this ngModelGroup to group your data -->
+        <div ngModelGroup="userDataGroup" #userData123="ngModelGroup">
 
-        Username<br />
-        <input type="text">
-        <br /><br />
+            <h3>Template Driven Form</h3>
+            <br />
 
-        Mail<br />
-        <input type="text">
-        <br /><br />
+            Username<br />
+            <input type="text" [ngModel]="defaultValue" name="username" required>
+            <br /><br />
 
-        Fruits<br />
-        <select>
-            <option value="apple">Apple</option>
-            <option value="orange">Orange</option>
-        </select>
-        <br /><br />
+            <button type="button" (click)="suggestUserName()">Suggest Username</button>
+            <br /><br />
 
-        <button type="submit">Submit</button><br />
+            E-Mail<br />
+            <input type="text" ngModel name="email" required email #email123="ngModel">
+            <div *ngIf="!email123.valid && email123.touched">Please provide correct email-Id!!</div>
+            <br /><br />
+
+            Fruits<br />
+            <select ngModel name="fruits" required>
+                <option value="Apple">Apple</option>
+                <option value="Orange">Orange</option>
+            </select>
+            <br /><br />
+
+            Genders<br />
+            <div *ngFor="let gender of genders">
+                {{ gender }}<input type="radio" ngModel name="gender" [value]="gender" required>
+            </div>
+            <br />
+
+            <button type="submit" [disabled]="!formSubmit123.valid">Submit</button><br />
+
+        </div>
+        <div *ngIf="!userData123.valid && userData123.touched">Form not Valid!</div>
 
     </form>
 
