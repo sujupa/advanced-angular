@@ -44,6 +44,34 @@ export class ReactiveComponent implements OnInit {
       'hobbies': new FormArray([])
     });
 
+    this.signUpForm.valueChanges.subscribe((value) => {
+      console.log("Value Changes: ", value);
+
+    });
+
+    this.signUpForm.statusChanges.subscribe((status) => {
+      console.log("Status Changes: ", status);
+
+    });
+
+    // Setting value, here you have must enter/update/mention all fields
+    // this.signUpForm.setValue({
+    //   'username': "Sujay Patil UI Designer",
+    //   'lastnameGroup': {
+    //     'lastname': 'patil'                                                // Use any one of this
+    //   },
+    //   'email': 'sujupa@gmail.com',
+    //   'gender': 'male',
+    //   'hobbies': []
+    // });
+
+    // Set the fields according to your fields, nothing mandatory to mention all fields
+    this.signUpForm.patchValue({
+      'username': "Sujay Patil UI Designer from patch value",                 // Use any one of this
+    });
+
+    this.signUpForm.reset();
+
   }
 
   onSubmit() {
@@ -57,7 +85,7 @@ export class ReactiveComponent implements OnInit {
 
   }
 
-  // Synchronous
+  // Synchronous Custom Validator
   forbiddenNames(control: FormControl): { [s: string]: boolean } {
     if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
       return { 'nameIsForbidden': true };
@@ -65,7 +93,7 @@ export class ReactiveComponent implements OnInit {
     return null; // It has to be null, it can't be false/true !!
   }
 
-  // Asynchronous
+  // Asynchronous Custom Validator
   forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
 
     const promise = new Promise<any>((resolve, reject) => {
