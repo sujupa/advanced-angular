@@ -147,4 +147,4 @@ private customIntervalObservable: Subscription;
 25) To group your data in template-driven forms use this inside form tag, 
 <div ngModelGroup="userDataGroup"></div>  --> inside this put your input n all fields.
 
-26) 
+26) Pipes are used to transform output in your template.

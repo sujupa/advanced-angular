@@ -17,6 +17,7 @@ import { AuthService } from './auth-guard/auth.service';
 import { CanDeactivateGuard } from './auth-guard/can-deactivate-guard.service';
 import { TemplateDrivenComponent } from './forms/template-driven/template-driven.component';
 import { ReactiveComponent } from './forms/reactive/reactive.component';
+import { PipesComponent } from './pipes/pipes.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'notFound', component: PageNotFoundComponent, data: { message: 'Page Not Found from app.module.ts' } },
   { path: 'templateForms', component: TemplateDrivenComponent },
   { path: 'reactiveForms', component: ReactiveComponent },
+  { path: 'pipes', component: PipesComponent },
   { path: '**', redirectTo: '/notFound' }
 ];
 
@@ -51,7 +53,8 @@ const routes: Routes = [
     ChildTestComponentComponent,
     PageNotFoundComponent,
     TemplateDrivenComponent,
-    ReactiveComponent
+    ReactiveComponent,
+    PipesComponent
   ],
   imports: [
     BrowserModule,
