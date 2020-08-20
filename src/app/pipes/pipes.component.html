@@ -1,6 +1,16 @@
 <div style="border: 1px solid black; width: max-content; margin: 10px 0px 10px 0px; padding: 20px;">
 
     <h3>Pipes</h3>
-    <div>{{ name | uppercase }}</div>
+
+    <input type="text" [(ngModel)]="filteredStatus">
+
+    <h3>App Status: {{ appStatus | async}}</h3>
+
+    <div *ngFor="let server of servers | filter:filteredStatus:'status'">
+        <p class="bg">{{ server.name | shorten: 10 }}</p>
+        <p>{{ server.instanceType | uppercase }}</p>
+        <p>{{ server.status }}</p>
+        <p>{{ server.started }}</p>
+    </div>
 
 </div>

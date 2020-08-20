@@ -7,7 +7,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PipesComponent implements OnInit {
 
-  name: string = "Sujay Patil";
+  appStatus = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('stable');
+    }, 2000);
+  });
+
+  servers = [
+    {
+      name: 'Server 123',
+      instanceType: 'small',
+      status: 'running',
+      started: 'monday 2019'
+    },
+    {
+      name: 'Server 456789',
+      instanceType: 'medium',
+      status: 'running',
+      started: 'thursday 2018'
+    },
+    {
+      name: 'Server 456789',
+      instanceType: 'medium',
+      status: 'stopped',
+      started: 'thursday 2018'
+    }
+  ];
+
+  filteredStatus: string = "";
 
   constructor() { }
 

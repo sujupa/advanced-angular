@@ -18,6 +18,8 @@ import { CanDeactivateGuard } from './auth-guard/can-deactivate-guard.service';
 import { TemplateDrivenComponent } from './forms/template-driven/template-driven.component';
 import { ReactiveComponent } from './forms/reactive/reactive.component';
 import { PipesComponent } from './pipes/pipes.component';
+import { ShortenPipe } from './customPipe/shorten.pipe';
+import { FilterPipe } from './customPipe/filter.pipe';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -54,7 +56,9 @@ const routes: Routes = [
     PageNotFoundComponent,
     TemplateDrivenComponent,
     ReactiveComponent,
-    PipesComponent
+    PipesComponent,
+    ShortenPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
