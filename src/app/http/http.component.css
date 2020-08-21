@@ -1,0 +1,12 @@
+.http{
+    border: 1px solid black;
+    padding: 20px;
+    margin: 10px 0px 10px 0px;
+    width: max-content;
+}
+
+.labels{
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: blanchedalmond;
+}

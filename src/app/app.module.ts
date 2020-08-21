@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
@@ -20,6 +21,7 @@ import { ReactiveComponent } from './forms/reactive/reactive.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { ShortenPipe } from './customPipe/shorten.pipe';
 import { FilterPipe } from './customPipe/filter.pipe';
+import { HttpComponent } from './http/http.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -41,6 +43,7 @@ const routes: Routes = [
   { path: 'templateForms', component: TemplateDrivenComponent },
   { path: 'reactiveForms', component: ReactiveComponent },
   { path: 'pipes', component: PipesComponent },
+  { path: 'http', component: HttpComponent },
   { path: '**', redirectTo: '/notFound' }
 ];
 
@@ -58,14 +61,16 @@ const routes: Routes = [
     ReactiveComponent,
     PipesComponent,
     ShortenPipe,
-    FilterPipe
+    FilterPipe,
+    HttpComponent
   ],
   imports: [
     BrowserModule,
     // RouterModule.forRoot(routes, { useHash: true })
     RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [AuthService, AuthGuard, CanDeactivateGuard],
   bootstrap: [AppComponent]
