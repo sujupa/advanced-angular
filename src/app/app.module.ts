@@ -24,6 +24,8 @@ import { FilterPipe } from './customPipe/filter.pipe';
 import { HttpComponent } from './http/http.component';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { LoggingInterceptorsService } from './interceptors/logging-interceptors.service';
+import { DynamicComponentComponent } from './dynamic-component/dynamic-component.component';
+import { PlaceholderDirective } from './http/placeholder/placeholder.directive';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -50,6 +52,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  entryComponents: [
+    DynamicComponentComponent     // Not needed for angular >= 9
+  ],
   declarations: [
     AppComponent,
     TestComponent,
@@ -64,7 +69,9 @@ const routes: Routes = [
     PipesComponent,
     ShortenPipe,
     FilterPipe,
-    HttpComponent
+    HttpComponent,
+    DynamicComponentComponent,
+    PlaceholderDirective
   ],
   imports: [
     BrowserModule,

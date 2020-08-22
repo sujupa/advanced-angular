@@ -2,6 +2,10 @@
 
     <h3>HTTP</h3>
 
+    <!-- <app-dynamic-component [message]="error" (closeAlert)="onCloseAlert()" *ngIf="error"></app-dynamic-component> -->
+
+    <ng-template appPlaceholder></ng-template>
+
     <div *ngFor="let title of titleArray; let i = index">
         <div class="labels">{{ i+1 }}) {{ title }}</div>
     </div>

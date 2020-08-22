@@ -1,18 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewChild, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpEventType } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { Posts } from './posts';
+
+import { DynamicComponentComponent } from '../dynamic-component/dynamic-component.component';
+import { PlaceholderDirective } from './placeholder/placeholder.directive';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-http',
   templateUrl: './http.component.html',
   styleUrls: ['./http.component.css']
 })
-export class HttpComponent implements OnInit {
+export class HttpComponent implements OnInit, OnDestroy {
 
+  error = 'Could not get DATA';
   titleArray = [];
+  @ViewChild(PlaceholderDirective, { static: true }) placeHolderDrctve: PlaceholderDirective;
 
-  constructor(private http: HttpClient) { }
+  private closeSub: Subscription;
+
+  constructor(private http: HttpClient,
+    private componentFactoryResolver: ComponentFactoryResolver) { }
+
+  ngOnDestroy() {
+
+    if (this.closeSub) {
+      this.closeSub.unsubscribe();
+    }
+  }
 
   ngOnInit(): void {
 
@@ -71,6 +87,29 @@ export class HttpComponent implements OnInit {
 
       });
 
+    this.showErrorAlert('Could not get Data Programmatically!!');
+
+  }
+
+  onCloseAlert() {
+    this.error = null;
+  }
+
+  // Programmatically creating component
+  private showErrorAlert(message: string) {
+    const dynamicCmpFactory = this.componentFactoryResolver.resolveComponentFactory(DynamicComponentComponent);
+
+    const hostViewContainerRef = this.placeHolderDrctve.viewContainerRef;
+    hostViewContainerRef.clear();
+
+    const componentRef = hostViewContainerRef.createComponent(dynamicCmpFactory);
+
+    // here you can access properties of your component, here it is dynamic component
+    componentRef.instance.message = message;
+    this.closeSub = componentRef.instance.closeAlert.subscribe(() => {
+      // this.closeSub.unsubscribe();
+      hostViewContainerRef.clear();
+    });
 
   }
 

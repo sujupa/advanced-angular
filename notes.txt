@@ -148,3 +148,5 @@ private customIntervalObservable: Subscription;
 <div ngModelGroup="userDataGroup"></div>  --> inside this put your input n all fields.
 
 26) Pipes are used to transform output in your template.
+
+27) Dynamic Components are Loaded Programmatically, like using *ngIf
