@@ -150,3 +150,4 @@ private customIntervalObservable: Subscription;
 26) Pipes are used to transform output in your template.
 
 27) Dynamic Components are Loaded Programmatically, like using *ngIf
+    * here dynamic component has been used in http.component.html
