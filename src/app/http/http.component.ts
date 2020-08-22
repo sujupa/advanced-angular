@@ -32,7 +32,7 @@ export class HttpComponent implements OnInit {
       })
       .pipe(map((responseData) => {    // Posts[] means array of type Posts
 
-        console.log(responseData);
+        // console.log(responseData);
 
         responseData.body.forEach(ele => {
           this.titleArray.push(ele.title);
@@ -41,7 +41,7 @@ export class HttpComponent implements OnInit {
         return this.titleArray;
       }))
       .subscribe((data) => {
-        console.log('http data: ', data);
+        // console.log('http data: ', data);
       }, (error) => {
         console.log(`Error while fetching data: ${error.message}`);
 

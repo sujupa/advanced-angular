@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
@@ -22,6 +22,8 @@ import { PipesComponent } from './pipes/pipes.component';
 import { ShortenPipe } from './customPipe/shorten.pipe';
 import { FilterPipe } from './customPipe/filter.pipe';
 import { HttpComponent } from './http/http.component';
+import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
+import { LoggingInterceptorsService } from './interceptors/logging-interceptors.service';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -72,7 +74,18 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard, CanDeactivateGuard],
+  providers: [AuthService, AuthGuard, CanDeactivateGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptorsService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
