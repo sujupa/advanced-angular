@@ -164,4 +164,27 @@ private customIntervalObservable: Subscription;
 
 30) While creating new module please add CommonModule in imports[], so that ngFor, ngIf everything works!
 
-31) 
+31) To use lazy loading use loadChildren: './folder/module#ModuleName'	--> search about this
+
+    * in old Angular:
+
+{ path: 'recipes', loadChildren: './folder/recipes.module#ModuleName'}
+
+    * in new Angular
+
+{ path: 'recipes', loadChildren: () => import('./folder/recipes.module#ModuleName').then(m => m.RecipesModule)}
+
+So the components imported in this module will load only when routed to this module only!
+
+32) Pre-Loading lazy loading module:
+
+@NgModule({
+	imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})]
+})
+
+33) Types of compiler in Angular: 
+    
+    * Just-In-Time Compiler (while development)
+    * Ahead-Of-Time Compiler (while building production files)
+
+34) 

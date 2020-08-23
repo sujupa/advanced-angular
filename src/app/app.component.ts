@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth-guard/auth.service';
 import { Router } from '@angular/router';
+import { LoggingService } from './logging.service';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +20,13 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.firstName = "Sujay";
     this.lastName = "Patil";
+
+    this.loggingService.printLog('Logging from App.component.ts');
   }
 
   constructor(private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private loggingService: LoggingService) { }
 
   getEvent1(event) {
     this.schoolName = event;

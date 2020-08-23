@@ -15,6 +15,7 @@ import { combineLatest } from 'rxjs';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './auth-guard/auth-guard.service';
 import { AuthService } from './auth-guard/auth.service';
+// import { LoggingService } from './logging.service';
 import { CanDeactivateGuard } from './auth-guard/can-deactivate-guard.service';
 import { TemplateDrivenComponent } from './forms/template-driven/template-driven.component';
 import { ReactiveComponent } from './forms/reactive/reactive.component';
