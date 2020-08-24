@@ -244,4 +244,15 @@ transition('void => *', [
 
 ]) 
 
-38) 
+38) Service Workers -> it runs on another thread than the javascript thread, decoupled from HTML pages. Manage All pages of given scope.
+    ng add @angular/pwa  
+
+39) simple node based server to run production files
+    npm install -g http-server
+	
+    To run, goto dist folder and run the following command:
+    http-server -p 8081
+
+40) ngsw-config.json is the main file for service workers, all the behaviour is in this file.
+
+41) 

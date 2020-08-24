@@ -28,6 +28,8 @@ import { AuthInterceptorService } from './interceptors/auth-interceptor.service'
 import { LoggingInterceptorsService } from './interceptors/logging-interceptors.service';
 import { DynamicComponentComponent } from './dynamic-component/dynamic-component.component';
 import { PlaceholderDirective } from './http/placeholder/placeholder.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -85,7 +87,8 @@ const routes: Routes = [
     }),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthService, AuthGuard, CanDeactivateGuard,
     {
