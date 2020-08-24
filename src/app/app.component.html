@@ -32,4 +32,19 @@ School Name: {{schoolName}}
 <button (click)="onLogout()">Logout</button>
 
 
+<!-- Animations Part -->
+<br /><br />
+<button class="btn btn-primary" style="margin-left: 10px;" (click)="onAnimate()">Animate</button>
+<button class="btn btn-primary" style="margin-left: 10px;" (click)="onShrink()">Shrink</button>
+<br /><br />
+
+<div style="width: 100px; height: 100px; margin-left: 10px;" [@divState]="state"
+  (@divState.start)="animationStarted($event)" (@divState.done)="animationDone($event)">
+  <div>WELCOME to Animation of divState!</div>
+</div>
+
+<div style="width: 100px; height: 100px; margin-left: 10px; margin-top: 10px;" [@wildState]="wildState">
+  <div>WELCOME to Animation of wildState!</div>
+</div>
+
 <router-outlet></router-outlet>

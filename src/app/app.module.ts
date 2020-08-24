@@ -3,6 +3,7 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
@@ -75,9 +76,13 @@ const routes: Routes = [
     PlaceholderDirective
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     // RouterModule.forRoot(routes, { useHash: true })
-    RouterModule.forRoot(routes),
+    // RouterModule.forRoot(routes, { useHash: true })
+    RouterModule.forRoot(routes, {
+      initialNavigation: 'enabled'
+    }),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
